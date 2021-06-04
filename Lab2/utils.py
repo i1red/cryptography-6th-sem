@@ -18,6 +18,7 @@ def hex_pi_digit_generator():
         N += 1
 
 
+# python doesnt have bitwise rotations and uses big integer (not int32), so I use this rotation algorithm
 def int_rotate_left(integer: int, shift: int) -> int:
     s = np.binary_repr(integer, INT_BIT_SIZE).rjust(INT_BIT_SIZE, '0')
     return int(s[shift:] + s[:shift], 2)

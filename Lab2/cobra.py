@@ -12,10 +12,6 @@ W_FIRST_DIM_SIZE: Final[int] = 2
 S_SECOND_DIM_SIZE: Final[int] = 256
 
 
-vectorized_int_rotate_left: Final[Callable] = np.vectorize(int_rotate_left)
-vectorized_int_rotate_right: Final[Callable] = np.vectorize(int_rotate_right)
-
-
 class Cobra:
     def __init__(self, key: np.ndarray) -> None:
         if len(key) == 0 or len(key) > MAX_KEY_SIZE:
@@ -37,7 +33,7 @@ class Cobra:
             self.change_boxes(self.P)
 
             if repetition == 0:
-                key = vectorized_int_rotate_right(key, 1)
+                key = np.vectorize(int_rotate_right)(key, 1)
 
         self.change_boxes(self.P)
         self.change_boxes(self.S)
@@ -81,8 +77,6 @@ class Cobra:
             next_result[BLOCK_SIZE - 1] = result[0]
             for j in range(BLOCK_SIZE - 1, 0, -1):
                 next_result[j - 1] = int_rotate_left(result[j], 1) ^ self.f(next_result[j], self.P[i][j - 1])
-                #next_result[1] = int_rotate_left(result[2], 1) ^ self.f(next_result[2], self.P[i][1])
-                #next_result[0] = int_rotate_left(result[1], 1) ^ self.f(next_result[1], self.P[i][0])
 
             result = next_result.copy()
 

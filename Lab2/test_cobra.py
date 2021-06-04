@@ -15,7 +15,7 @@ def test_cobra():
         data = np.random.randint(0, 1_000_000, size=4)
         encrypted_data = cobra.encrypt_block(data)
         decrypted_data = cobra.decrypt_block(encrypted_data)
-        assert np.any(encrypted_data != data)
+        assert np.all(encrypted_data != data)
         assert np.all(data == decrypted_data)
 
 
