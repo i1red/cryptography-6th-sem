@@ -7,3 +7,10 @@
 - Extended CGD (Euclidian algorithm)
 - Karatsuba multiplication
 - Montogomery
+
+### Lab2
+- Cobra cipher
+
+
+### Lab3
+ - Adler32 hashing
